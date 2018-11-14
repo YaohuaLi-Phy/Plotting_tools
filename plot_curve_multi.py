@@ -35,11 +35,11 @@ mpl.rcParams['figure.figsize'] = 10, 7.5 #default 8, 6
 path = '/home/yaohua/Downloads/questb1021/protein/umbrella3/testMg/WHAM/'
 parser=argparse.ArgumentParser()
 #fn = 'output.txt'
-parser.add_argument("fn", type=str)
-parser.add_argument("skiplines")
-parser.add_argument("col_start")
-parser.add_argument("num_colunm")
-parser.add_argument("start")
+parser.add_argument("fn", type=str)	# file name of data
+parser.add_argument("skiplines")	# header lines to skip
+parser.add_argument("col_start")	# plot from col_start through num_column
+parser.add_argument("num_colunm")	# 
+parser.add_argument("start")		# starting point for x axis
 #parser.add_argument("name")
 args = parser.parse_args()
 
