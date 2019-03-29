@@ -27,18 +27,18 @@ mpl.rcParams['legend.fontsize'] = 18
 #figure width or height
 mpl.rcParams['figure.subplot.left'] = 0.175 #default 0.125
 mpl.rcParams['figure.subplot.bottom'] = 0.15 #default 0.1
-mpl.rcParams['figure.figsize'] = 10, 7.5 #default 8, 6
+mpl.rcParams['figure.figsize'] = 16, 9 #default 8, 6
 
 ###########################################################
 # constants
 
-path = '/home/yaohua/Downloads/questb1021/protein/umbrella3/testMg/WHAM/'
+path = '/home/yaohua/Downloads/questb1021/protein/mutate/WHAM/'
 parser=argparse.ArgumentParser()
 #fn = 'output.txt'
 parser.add_argument("fn", type=str)	# file name of data
 parser.add_argument("skiplines")	# header lines to skip
 parser.add_argument("col_start")	# plot from col_start through num_column
-parser.add_argument("num_colunm")	# 
+parser.add_argument("num_colunm")	#
 parser.add_argument("start")		# starting point for x axis
 #parser.add_argument("name")
 args = parser.parse_args()
@@ -50,7 +50,7 @@ data = np.genfromtxt(path+str(args.fn), delimiter='\t', skip_header=int(args.ski
 #x_lbl = name[0, int(args.x)]
 #y_lbl = name[0, int(args.y)]
 x_lbl = 'X'
-y_lbl = 'PMF (kCal/mol)'
+y_lbl = 'probability (a.u.)'
 
 start=int(args.start)
 end=len(data)
@@ -69,11 +69,9 @@ for i in range(numC):
 fig = plt.figure()
 for i in range(int(args.col_start), numC):
     plt.plot(x,y[i], linewidth=2, label='window{}'.format(i))
-plt.legend()
+plt.legend(loc=0)
 plt.xlabel(x_lbl)
 plt.ylabel(y_lbl)
 #plt.xticks(rotation=45)
-#plt.savefig('plot.pdf')
+plt.savefig(path+str(args.fn)+'.pdf')
 plt.show()
-
-
